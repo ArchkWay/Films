@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 import com.example.archek.films.net.KinoService;
 import com.example.archek.films.model.ObjectListResponse;
 import com.example.archek.films.model.ObjectResponse;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements RecAdapter.Callba
     private final KinoService service = RestApi.createService( KinoService.class );//initiate the recyclerview
     private RecAdapter adapter = new RecAdapter(this);
     private RecyclerView rvFilms;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements RecAdapter.Callba
         final RecyclerView.LayoutManager lm = new LinearLayoutManager( this );
         rvFilms.setLayoutManager( lm );
         rvFilms.setAdapter( adapter );
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar( toolbar );
         /*call all films through the adapter*/
         call = service.getFilms();
         call.enqueue( new Callback<ObjectListResponse>() {
