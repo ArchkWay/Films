@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backitem"
+    >
+
+        <ImageView
+          android:id="@+id/ivBack"
+          android:layout_width="70dp"
+          android:layout_height="wrap_content"
+          android:src="@drawable/arrowback"
+          />
+        <TextView
+            android:id="@+id/tvRuName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:textColor="#111"
+            android:layout_marginLeft="70dp"
+            android:text="Побег из Шоушенка"
+            app:layout_constraintLeft_toRightOf="@id/ivBack"
+            />
+
+
+    <ImageView
+        android:id="@+id/ivPic"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:src="@drawable/photo"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRuName"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl2"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toEndOf="@id/ivPic"
+        app:layout_constraintTop_toTopOf="@+id/ivPic"
+        >
+
+        <TextView
+            android:id="@+id/tvEngName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="The Shawshank Redemption" />
+
+        <TextView
+            android:id="@+id/tvYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#111"
+            app:layout_constraintTop_toBottomOf="@id/tvEngName"
+            android:text="Год:   1994" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="#4e8e39"
+            app:layout_constraintTop_toBottomOf="@id/tvYear"
+            android:text="Рейтинг:  9.196" />
+    </android.support.constraint.ConstraintLayout>
+<TextView
+    android:id="@+id/tvDes"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:textColor="#111"
+    app:layout_constraintTop_toBottomOf="@+id/ivPic"
+    android:text="@string/des"
+    />
+
+
+</android.support.constraint.ConstraintLayout>
