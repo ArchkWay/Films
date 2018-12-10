@@ -3,8 +3,11 @@ package com.example.archek.films;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ public class FilmInfoActivity extends Activity {
     private static final String EXTRA_FILM_YEAR = "EXTRA_FILM_YEAR";
     private static final String EXTRA_FILM_RATING = "EXTRA_FILM_RATING";
     private static final String EXTRA_FILM_DESCRIPTION = "EXTRA_FILM_DESCRIPTION";
+
     /*get the extras from mainactivity*/
     public static Intent makeIntent(Context context, ObjectResponse film) {
         return new Intent( context, FilmInfoActivity.class )
@@ -50,6 +54,12 @@ public class FilmInfoActivity extends Activity {
         TextView tvYear = findViewById(R.id.tvYear);
         TextView tvRating = findViewById(R.id.tvRating);
         TextView tvDes = findViewById(R.id.tvDes);
+        ConstraintLayout clInfo = findViewById(R.id.clInfo);
+        if(Build.VERSION.SDK_INT >= 24) {
+            clInfo.setBackground(getResources().getDrawable(R.drawable.backitem));
+        }
+        tvDes.setMovementMethod(new ScrollingMovementMethod());
+        tvFilmEngName.setMovementMethod(new ScrollingMovementMethod());
 
         if (filmRating.equals("Рейтинг:  null")){
             filmRating = "Нет рейтинга";

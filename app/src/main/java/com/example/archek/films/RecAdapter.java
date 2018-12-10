@@ -1,6 +1,8 @@
 package com.example.archek.films;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,9 +43,21 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //bind and load all the views to the holder
         ObjectResponse film = films.get(holder.getAdapterPosition());
+        if(Build.VERSION.SDK_INT >= 24) {
+            holder.clItem.setBackgroundResource(R.drawable.backitem);
+            holder.tvFilmDate.setBackgroundResource(R.drawable.roundedcorners);
+
+        }
         holder.tvFilmRuName.setText( film.getLocalizedName() );
         holder.tvFilmEngName.setText( film.getName() );
-        holder.tvRating.setText( film.getRating() );
+        try {
+            if (film.getRating().length() < 3) {
+                holder.tvRating.setText("Нет рейтинга");
+            }
+            else holder.tvRating.setText(film.getRating());
+        }
+        catch (Exception n){holder.tvRating.setText("Нет рейтинга");}
+
         holder.tvFilmDate.setText(film.getYear());
         //set invisible correspond years
         if(film.getOneYear()){
@@ -96,10 +110,12 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
         private TextView tvFilmRuName;
         private TextView tvFilmEngName;
         private TextView tvRating;
+        private ConstraintLayout clItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
             //initiate views
+            clItem = itemView.findViewById(R.id.clItem);
             tvFilmDate = itemView.findViewById(R.id.tvFilmDate);
             tvFilmRuName = itemView.findViewById(R.id.tvFilmRuName);
             tvFilmEngName = itemView.findViewById(R.id.tvFilmEngName);

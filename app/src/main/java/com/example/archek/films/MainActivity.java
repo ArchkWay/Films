@@ -1,7 +1,9 @@
 package com.example.archek.films;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,11 +23,16 @@ public class MainActivity extends AppCompatActivity implements RecAdapter.Callba
     private RecAdapter adapter = new RecAdapter(this);
     private RecyclerView rvFilms;
     Toolbar toolbar;
+    ConstraintLayout clMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        clMain = findViewById(R.id.clMain);
+        if(Build.VERSION.SDK_INT >= 24) {
+            clMain.setBackground(getResources().getDrawable(R.drawable.back));
+        }
         /*setup the list(in recyclerview)/adapter*/
         rvFilms = findViewById(R.id.rvFilms);
         final RecyclerView.LayoutManager lm = new LinearLayoutManager( this );
