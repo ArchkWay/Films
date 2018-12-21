@@ -1,24 +1,26 @@
-package com.example.archek.films;
+package com.example.archek.films.mvp;
 
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.archek.films.model.ObjectListResponse;
-import com.example.archek.films.model.ObjectResponse;
+
+import com.example.archek.films.R;
+import com.example.archek.films.mocks.ObjectListResponse;
+import com.example.archek.films.mocks.ObjectResponse;
+
 import java.util.LinkedList;
 import java.util.List;
+
 import static android.view.View.GONE;
 
-public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
+public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
     private List<ObjectResponse> films = new LinkedList<>();
     private final Callback callback;
 
-    public RecAdapter(Callback callback) { //constuctor with callback
+    public FilmsAdapter(Callback callback) { //constuctor with callback
         this.callback = callback;
     }
 
@@ -43,11 +45,6 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //bind and load all the views to the holder
         ObjectResponse film = films.get(holder.getAdapterPosition());
-        if(Build.VERSION.SDK_INT >= 24) {
-            holder.clItem.setBackgroundResource(R.drawable.backitem);
-            holder.tvFilmDate.setBackgroundResource(R.drawable.roundedcorners);
-
-        }
         holder.tvFilmRuName.setText( film.getLocalizedName() );
         holder.tvFilmEngName.setText( film.getName() );
         try {
@@ -110,12 +107,10 @@ public class RecAdapter extends RecyclerView.Adapter<RecAdapter.ViewHolder> {
         private TextView tvFilmRuName;
         private TextView tvFilmEngName;
         private TextView tvRating;
-        private ConstraintLayout clItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
             //initiate views
-            clItem = itemView.findViewById(R.id.clItem);
             tvFilmDate = itemView.findViewById(R.id.tvFilmDate);
             tvFilmRuName = itemView.findViewById(R.id.tvFilmRuName);
             tvFilmEngName = itemView.findViewById(R.id.tvFilmEngName);

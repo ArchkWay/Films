@@ -1,21 +1,20 @@
-package com.example.archek.films;
+package com.example.archek.films.mvp.filminfo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.method.ScrollingMovementMethod;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.archek.films.model.ObjectResponse;
+import com.example.archek.films.R;
+import com.example.archek.films.mocks.ObjectResponse;
 import com.squareup.picasso.Picasso;
 
-public class FilmInfoActivity extends Activity {
+public class FilmInfoActivity extends AppCompatActivity {
 
     private static final String EXTRA_RU_NAME = "EXTRA_RU_NAME";
     private static final String EXTRA_ENG_NAME = "EXTRA_ENG_NAME";
@@ -23,6 +22,7 @@ public class FilmInfoActivity extends Activity {
     private static final String EXTRA_FILM_YEAR = "EXTRA_FILM_YEAR";
     private static final String EXTRA_FILM_RATING = "EXTRA_FILM_RATING";
     private static final String EXTRA_FILM_DESCRIPTION = "EXTRA_FILM_DESCRIPTION";
+    Toolbar toolbar;
 
     /*get the extras from mainactivity*/
     public static Intent makeIntent(Context context, ObjectResponse film) {
@@ -38,6 +38,9 @@ public class FilmInfoActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filminfo);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /*bearing from extras to strings*/
         Intent intent = getIntent();
         String urlPic = intent.getStringExtra(EXTRA_URL_PIC);
@@ -48,16 +51,10 @@ public class FilmInfoActivity extends Activity {
         String filmDes = "Описание: " + intent.getStringExtra(EXTRA_FILM_DESCRIPTION);
         /*initiate the views*/
         ImageView ivPic = findViewById(R.id.ivPic);
-        ImageView ivBack = findViewById(R.id.ivBack);
-        TextView tvRuName = findViewById(R.id.tvRuName);
         TextView tvFilmEngName = findViewById(R.id.tvEngName);
         TextView tvYear = findViewById(R.id.tvYear);
         TextView tvRating = findViewById(R.id.tvRating);
         TextView tvDes = findViewById(R.id.tvDes);
-        ConstraintLayout clInfo = findViewById(R.id.clInfo);
-        if(Build.VERSION.SDK_INT >= 24) {
-            clInfo.setBackground(getResources().getDrawable(R.drawable.backitem));
-        }
         tvDes.setMovementMethod(new ScrollingMovementMethod());
         tvFilmEngName.setMovementMethod(new ScrollingMovementMethod());
 
@@ -74,20 +71,25 @@ public class FilmInfoActivity extends Activity {
                 .load(urlPic)
                 .placeholder(R.drawable.photo)
                 .into(ivPic);
-        tvRuName.setText(ruName);
+        getSupportActionBar().setTitle(ruName);
         tvFilmEngName.setText(engName);
         tvYear.setText(filmYear);
         tvRating.setText(filmRating);
         tvDes.setText(filmDes);
         /*//Comeback to MainActivity*/
-        ivBack.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent returnBtn = new Intent(getApplicationContext(),
-                        MainActivity.class);
-                startActivity(returnBtn);
-            }
-        } );
+//        toolbar.setOnClickListener( new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent returnBtn = new Intent(getApplicationContext(),
+//                        FilmsActivity.class);
+//                startActivity(returnBtn);
+//            }
+//        } );
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
 }

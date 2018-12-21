@@ -1,4 +1,4 @@
-package com.example.archek.films.model;
+package com.example.archek.films.mocks;
 
 import com.google.gson.annotations.SerializedName;
 

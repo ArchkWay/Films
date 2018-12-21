@@ -2,7 +2,7 @@ package com.example.archek.films.net;
 
 
 
-import com.example.archek.films.model.ObjectListResponse;
+import com.example.archek.films.mocks.ObjectListResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

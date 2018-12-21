@@ -10,15 +10,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         app:cardCornerRadius="6dp"
+        android:background="@drawable/back"
         >
-    <!--android:background="@drawable/back"-->
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/clItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/backitem"
         >
-        <!--android:background="@drawable/backitem"-->
 
         <TextView
             android:id="@+id/tvFilmDate"
@@ -26,8 +25,8 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:text="1994"
+            android:background="@drawable/roundedcorners"
             />
-        <!--android:background="@drawable/roundedcorners"-->
 
         <TextView
             android:id="@+id/tvFilmRuName"

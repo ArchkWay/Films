@@ -1,97 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backitem"
     >
-    <!--android:background="@drawable/backitem"-->
 
-        <ImageView
-          android:id="@+id/ivBack"
-          android:layout_width="70dp"
-          android:layout_height="wrap_content"
-          android:src="@drawable/arrowback"
-          />
-        <TextView
-            android:id="@+id/tvRuName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:textColor="#111"
-            android:layout_marginLeft="70dp"
-            android:text="Побег из Шоушенка"
-            app:layout_constraintLeft_toRightOf="@id/ivBack"
-            />
-
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"/>
 
     <ImageView
         android:id="@+id/ivPic"
         android:layout_width="0dp"
         android:layout_height="250dp"
-        android:src="@drawable/photo"
         android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/photo"
         app:layout_constraintEnd_toStartOf="@id/cl2"
-        app:layout_constraintTop_toBottomOf="@+id/tvRuName"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cl2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@id/tvDes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ivPic"
-        app:layout_constraintTop_toTopOf="@+id/ivPic"
-        app:layout_constraintBottom_toTopOf="@id/tvDes"
-        >
+        app:layout_constraintTop_toTopOf="@+id/ivPic">
 
         <TextView
             android:id="@+id/tvEngName"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
             android:scrollbars="vertical"
+            android:text="The Shawshank Redemption"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/tvYear"
-            android:text="The Shawshank Redemption" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvYear"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:textSize="18sp"
+            android:text="Год:   1994"
             android:textColor="#111"
-            app:layout_constraintTop_toBottomOf="@id/tvEngName"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/tvRating"
-            android:text="Год:   1994" />
+            app:layout_constraintTop_toBottomOf="@id/tvEngName" />
 
         <TextView
             android:id="@+id/tvRating"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:textSize="24sp"
+            android:text="Рейтинг:  9.196"
             android:textColor="#4e8e39"
-            app:layout_constraintTop_toBottomOf="@id/tvYear"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Рейтинг:  9.196" />
+            app:layout_constraintTop_toBottomOf="@id/tvYear" />
     </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/tvDes"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:textColor="#111"
-            android:scrollbars = "vertical"
-            android:textSize="20sp"
-            android:text="@string/des"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivPic"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
+    <TextView
+        android:id="@+id/tvDes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:text="@string/des"
+        android:textColor="#111"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPic" />
 
 
 </android.support.constraint.ConstraintLayout>
