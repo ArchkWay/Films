@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -13,7 +13,11 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="android:background">?attr/colorPrimaryDark</item>
+        <item name="android:fitsSystemWindows">false</item>
     </style>
+    <style name="WindowTitle">
 
-    <style name="Theme">theme</style>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:titleTextAppearance" tools:ignore="NewApi">@style/TextAppearance.AppCompat.Body1</item>
+</style>
 </resources>

@@ -6,17 +6,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/rounded_films"
         android:label="@string/app_name"
+        android:name=".di.BaseApp"
         android:roundIcon="@mipmap/rounded_films"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvp.FilmsActivity">
+        <activity android:name=".views.FilmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.filminfo.FilmInfoActivity"/>
+        <activity android:name=".views.filminfo.FilmInfoActivity"/>
     </application>
 
 </manifest>

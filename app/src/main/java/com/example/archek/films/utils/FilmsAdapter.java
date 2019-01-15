@@ -1,4 +1,4 @@
-package com.example.archek.films.mvp;
+package com.example.archek.films.utils;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.archek.films.R;
-import com.example.archek.films.mocks.ObjectListResponse;
-import com.example.archek.films.mocks.ObjectResponse;
+import com.example.archek.films.utils.mocks.ObjectListResponse;
+import com.example.archek.films.utils.mocks.ObjectResponse;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -88,7 +88,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
                 catch (Exception notRating){}
             }
         }
-        /*marking year-correspond films, if this year allready showed*/
+        /*marking year-correspond films, if this year already showed*/
         for(int i = 1; i < films.size(); i++) {
             if(films.get(i).getYear().equals(films.get(i - 1).getYear())){
                 films.get(i).setOneYear(true);

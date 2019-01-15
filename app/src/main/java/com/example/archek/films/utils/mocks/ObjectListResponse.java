@@ -1,4 +1,4 @@
-package com.example.archek.films.mocks;
+package com.example.archek.films.utils.mocks;
 
 import java.util.List;
 
