@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    >
+    <TextView
+        android:id="@+id/tvFilmDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="1994"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cvFields"
+        />
+
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvFields"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
@@ -11,22 +28,16 @@
         android:layout_marginTop="4dp"
         app:cardCornerRadius="6dp"
         android:background="@drawable/back"
+        app:layout_constraintTop_toBottomOf="@id/tvFilmDate"
+        app:layout_constraintBottom_toBottomOf="parent"
         >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/backitem"
         >
 
-        <TextView
-            android:id="@+id/tvFilmDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="1994"
-            android:background="@drawable/roundedcorners"
-            />
 
         <TextView
             android:id="@+id/tvFilmRuName"
@@ -35,7 +46,8 @@
             android:textColor="#111"
             android:textSize="21sp"
             android:text="Побег из Шоушенка"
-            app:layout_constraintTop_toBottomOf="@id/tvFilmDate"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvFilmEngName"
             />
         <TextView
             android:id="@+id/tvFilmEngName"
@@ -56,4 +68,4 @@
 
     </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
-
+</android.support.constraint.ConstraintLayout>
